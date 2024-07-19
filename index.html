@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hello World!</h1>
+  <script>
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
+    function getComputerChoice(){
+      if (randomNumber >= 1 && randomNumber <= 33){
+        console.log("rock")
+        return("rock")
+      }
+      if (randomNumber >33 && randomNumber <=67){
+        console.log("paper")
+        return("paper")
+      }
+      if (randomNumber >67 && randomNumber <= 100){
+        console.log("scissors")
+        return("paper")
+      }
+
+      return randomNumber
+    }
+    console.log(randomNumber)
+    getComputerChoice();
+
+    let humanChoice = window.prompt("Please select one of the following: Rock, Paper, Scissors, and write your answer below")
+    function getHumanChoice(){
+      console.log(humanChoice)
+    }
+    
+    getHumanChoice();
+  </script>
+</body>
+</html>

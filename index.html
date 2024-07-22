@@ -14,26 +14,39 @@
         console.log("rock")
         return("rock")
       }
-      if (randomNumber >33 && randomNumber <=67){
+      else if (randomNumber >33 && randomNumber <=67){
         console.log("paper")
         return("paper")
       }
-      if (randomNumber >67 && randomNumber <= 100){
+      else if (randomNumber >67 && randomNumber <= 100){
         console.log("scissors")
         return("paper")
       }
 
       return randomNumber
     }
-    console.log(randomNumber)
     getComputerChoice();
-
+    console.log(randomNumber)
+    
     let humanChoice = window.prompt("Please select one of the following: Rock, Paper, Scissors, and write your answer below")
     function getHumanChoice(){
-      console.log(humanChoice)
+      if (humanChoice === "rock"){
+        console.log("yaaaay rocks")
+      }
+      else if (humanChoice === "paper"){
+        console.log("goats eat paper")
+      }
+      else if (humanChoice === "scissors"){
+        console.log("scissoring is fun")
+      }
+      else {
+      console.log("dude, write the right word")
+      }
     }
-    
     getHumanChoice();
+    console.log(humanChoice)
+
+
   </script>
 </body>
 </html>

@@ -8,43 +8,110 @@
 <body>
   <h1>Hello World!</h1>
   <script>
-    let randomNumber = Math.floor(Math.random() * 100) + 1;
+
+    let humanScore = 0
+    let computerScore = 0 
+    
     function getComputerChoice(){
+      let randomNumber = Math.floor(Math.random() * 100) + 1;
+      let computerChoice = ""   // this is initializing the variable, need to initialize outside the if statement... 
+      
       if (randomNumber >= 1 && randomNumber <= 33){
-        console.log("rock")
-        return("rock")
+        // console.log("rock")
+        computerChoice = "rock" // returns rock, and now is available to anything calling getComputerCHoice
       }
       else if (randomNumber >33 && randomNumber <=67){
-        console.log("paper")
-        return("paper")
+        // console.log("paper")
+        computerChoice = "paper"
       }
       else if (randomNumber >67 && randomNumber <= 100){
-        console.log("scissors")
-        return("paper")
+        // console.log("scissors")
+        computerChoice = "scissors"
+      }
+      return computerChoice 
+    }
+    
+    function getHumanChoice(){
+      let humanChoice = window.prompt("Please select one of the following: Rock, Paper, Scissors, and write your answer below").toLowerCase()
+      console.log("human choice is", humanChoice)
+      
+      while (humanChoice !== "rock" && humanChoice !== "paper" && humanChoice !== "scissors"){
+        console.log("You didn't write the correct choice, please choose again")
+        humanChoice = window.prompt("Please select one of the following: Rock, Paper, Scissors, and write your answer below").toLowerCase()
+
       }
 
-      return randomNumber
+      return humanChoice;
     }
-    getComputerChoice();
-    console.log(randomNumber)
+
     
-    let humanChoice = window.prompt("Please select one of the following: Rock, Paper, Scissors, and write your answer below")
-    function getHumanChoice(){
-      if (humanChoice === "rock"){
-        console.log("yaaaay rocks")
+    function playGame() {
+
+      function playRound(humanChoice, computerChoice) {
+      console.log("computer choice is", computerChoice)
+
+      if (humanChoice.toLowerCase() === computerChoice.toLowerCase()){
+        console.log("You tied and your score is", humanScore, "and the computer score is", computerScore)
       }
-      else if (humanChoice === "paper"){
-        console.log("goats eat paper")
+      else if (humanChoice.toLowerCase() === "rock" && computerChoice.toLowerCase() === "scissors"){
+        console.log("You win")
+        humanScore += 1
+        console.log("Your score is now", humanScore, "and computer score is", computerScore)
       }
-      else if (humanChoice === "scissors"){
-        console.log("scissoring is fun")
+
+      else if (humanChoice.toLowerCase() === "paper" && computerChoice.toLowerCase() === "rock"){
+        console.log("You win")
+        humanScore += 1
+        console.log("Your score is now", humanScore, "and computer score is", computerScore)
       }
-      else {
-      console.log("dude, write the right word")
+
+      else if (humanChoice.toLowerCase() === "scissors" && computerChoice.toLowerCase() === "paper"){
+        console.log("You win")
+        humanScore += 1
+        console.log("Your score is now", humanScore, "and computer score is", computerScore)
+      }
+
+      else if (humanChoice.toLowerCase() === "rock" && computerChoice.toLowerCase() === "paper"){
+        console.log("You lose")
+        computerScore += 1
+        console.log("Your score is now", humanScore, "and computer score is", computerScore)
+      }
+
+      else if (humanChoice.toLowerCase() === "paper" && computerChoice.toLowerCase() === "scissors"){
+        console.log("You lose")
+        computerScore += 1
+        console.log("Your score is now", humanScore, "and computer score is", computerScore)
+      }
+
+      else if (humanChoice.toLowerCase() === "scissors" && computerChoice.toLowerCase() === "rock"){
+        console.log("You lose")
+        computerScore += 1
+        console.log("Your score is now", humanScore, "and computer score is", computerScore)
+      }
+      
+    }
+    playRound(getHumanChoice(), getComputerChoice())
+    }
+
+    for (var i = 0; i < 5; i++) {
+    playGame();
+    }
+
+    function finalScore(){
+      console.log("Your final score was", humanScore, "and the computer's final score was", computerScore)
+      if (humanScore > computerScore){
+        console.log("You Win!")
+      }
+      else if (computerScore > humanScore){
+        console.log("You lose, try again")
+      }
+      else if (computerScore === humanScore){
+        console.log("You tied. ")
       }
     }
-    getHumanChoice();
-    console.log(humanChoice)
+    finalScore()
+    
+
 
 
   </script>
